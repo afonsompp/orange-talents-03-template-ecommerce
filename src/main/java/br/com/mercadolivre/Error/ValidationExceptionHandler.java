@@ -16,7 +16,7 @@ public class ValidationExceptionHandler {
 
 	private final MessageSource messageSource;
 
-	private final String INVALID_DATA = "invalid.data.message";
+	private String invalidData = "invalid.data.message";
 
 	public ValidationExceptionHandler(MessageSource messageSource) {
 		this.messageSource = messageSource;
@@ -27,12 +27,12 @@ public class ValidationExceptionHandler {
 	public ObjectError handler(MethodArgumentNotValidException exception) {
 		List<FieldErrors> errors = extractFieldErrors(exception);
 
-		String message = messageSource.getMessage(INVALID_DATA, null,
+		String message = messageSource.getMessage(
+				invalidData, null,
 				LocaleContextHolder.getLocale());
 
-		var error = new ObjectError(message, HttpStatus.BAD_REQUEST.value(), errors);
+		return new ObjectError(message, HttpStatus.BAD_REQUEST.value(), errors);
 
-		return error;
 	}
 
 	private List<FieldErrors> extractFieldErrors(
