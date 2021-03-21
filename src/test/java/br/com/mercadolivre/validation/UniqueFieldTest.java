@@ -1,4 +1,4 @@
-package br.com.mercadolivre.users.validation;
+package br.com.mercadolivre.validation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import javax.persistence.EntityManager;
