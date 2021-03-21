@@ -50,8 +50,8 @@ public class Category {
 		if (!(o instanceof Category)) {
 			return false;
 		}
-		Category category = (Category) o;
-		return id.equals(category.id) && name.equals(category.name);
+		Category instance = (Category) o;
+		return id.equals(instance.id) && name.equals(instance.name);
 	}
 
 	@Override
