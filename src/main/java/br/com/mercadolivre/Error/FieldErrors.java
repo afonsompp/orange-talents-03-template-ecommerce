@@ -1,4 +1,4 @@
-package br.com.mercadolivre.Error;
+package br.com.mercadolivre.error;
 
 public class FieldErrors {
 

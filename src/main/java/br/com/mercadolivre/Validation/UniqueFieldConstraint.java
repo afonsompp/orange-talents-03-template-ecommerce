@@ -1,4 +1,4 @@
-package br.com.mercadolivre.Validation;
+package br.com.mercadolivre.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

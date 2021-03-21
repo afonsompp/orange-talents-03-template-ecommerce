@@ -1,4 +1,4 @@
-package br.com.mercadolivre.User.utils;
+package br.com.mercadolivre.user.utils;
 
 import java.util.regex.Pattern;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

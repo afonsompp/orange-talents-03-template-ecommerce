@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import br.com.mercadolivre.Product.dto.CategoryRequest;
-import br.com.mercadolivre.Product.model.Category;
-import br.com.mercadolivre.Product.repository.CategoryRepository;
+import br.com.mercadolivre.product.dto.CategoryRequest;
+import br.com.mercadolivre.product.model.Category;
+import br.com.mercadolivre.product.repository.CategoryRepository;
 
 @SpringBootTest
 public class CategoryRequestTest {

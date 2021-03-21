@@ -1,4 +1,4 @@
-package br.com.mercadolivre.Validation;
+package br.com.mercadolivre.validation;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

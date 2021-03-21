@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory;
-import br.com.mercadolivre.Product.dto.CategoryRequest;
-import br.com.mercadolivre.Product.model.Category;
+import br.com.mercadolivre.product.dto.CategoryRequest;
+import br.com.mercadolivre.product.model.Category;
 
 @SpringBootTest
 public class FieldExistsTest {

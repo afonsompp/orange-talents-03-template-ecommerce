@@ -1,9 +1,9 @@
-package br.com.mercadolivre.User.controller;
+package br.com.mercadolivre.user.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.mercadolivre.User.dto.UserRequest;
-import br.com.mercadolivre.User.repository.UserRepository;
+import br.com.mercadolivre.user.dto.UserRequest;
+import br.com.mercadolivre.user.repository.UserRepository;
 import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

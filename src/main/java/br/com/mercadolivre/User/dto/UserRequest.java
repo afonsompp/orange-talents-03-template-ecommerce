@@ -1,11 +1,11 @@
-package br.com.mercadolivre.User.dto;
+package br.com.mercadolivre.user.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import br.com.mercadolivre.User.model.User;
-import br.com.mercadolivre.Validation.UniqueFieldConstraint;
+import br.com.mercadolivre.user.model.User;
+import br.com.mercadolivre.validation.UniqueFieldConstraint;
 
 public class UserRequest {
 	@NotBlank

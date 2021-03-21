@@ -1,4 +1,4 @@
-package br.com.mercadolivre.Error;
+package br.com.mercadolivre.error;
 
 import java.time.Instant;
 import java.util.List;

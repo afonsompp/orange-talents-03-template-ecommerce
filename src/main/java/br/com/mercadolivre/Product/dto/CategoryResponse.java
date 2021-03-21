@@ -1,6 +1,6 @@
-package br.com.mercadolivre.Product.dto;
+package br.com.mercadolivre.product.dto;
 
-import br.com.mercadolivre.Product.model.Category;
+import br.com.mercadolivre.product.model.Category;
 
 public class CategoryResponse {
 	private Long id;

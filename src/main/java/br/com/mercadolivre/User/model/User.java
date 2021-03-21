@@ -1,4 +1,4 @@
-package br.com.mercadolivre.User.model;
+package br.com.mercadolivre.user.model;
 
 import java.time.Instant;
 import javax.persistence.Column;
@@ -10,7 +10,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
-import br.com.mercadolivre.User.utils.BcryptEncoder;
+import br.com.mercadolivre.user.utils.BcryptEncoder;
 
 @Entity
 public class User {

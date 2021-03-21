@@ -1,10 +1,10 @@
-package br.com.mercadolivre.Product.controller;
+package br.com.mercadolivre.product.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.mercadolivre.Product.dto.CategoryRequest;
-import br.com.mercadolivre.Product.dto.CategoryResponse;
-import br.com.mercadolivre.Product.repository.CategoryRepository;
+import br.com.mercadolivre.product.dto.CategoryRequest;
+import br.com.mercadolivre.product.dto.CategoryResponse;
+import br.com.mercadolivre.product.repository.CategoryRepository;
 import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

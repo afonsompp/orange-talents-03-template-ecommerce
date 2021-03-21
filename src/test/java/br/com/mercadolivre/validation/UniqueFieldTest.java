@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory;
-import br.com.mercadolivre.User.dto.UserRequest;
-import br.com.mercadolivre.User.model.User;
+import br.com.mercadolivre.user.dto.UserRequest;
+import br.com.mercadolivre.user.model.User;
 
 @SpringBootTest
 public class UniqueFieldTest {

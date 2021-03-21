@@ -1,10 +1,10 @@
-package br.com.mercadolivre.Product.dto;
+package br.com.mercadolivre.product.dto;
 
 import javax.validation.constraints.NotBlank;
-import br.com.mercadolivre.Product.model.Category;
-import br.com.mercadolivre.Product.repository.CategoryRepository;
-import br.com.mercadolivre.Validation.FieldExistsConstraint;
-import br.com.mercadolivre.Validation.UniqueFieldConstraint;
+import br.com.mercadolivre.product.model.Category;
+import br.com.mercadolivre.product.repository.CategoryRepository;
+import br.com.mercadolivre.validation.FieldExistsConstraint;
+import br.com.mercadolivre.validation.UniqueFieldConstraint;
 
 public class CategoryRequest {
 
