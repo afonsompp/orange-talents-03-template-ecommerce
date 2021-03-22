@@ -1,6 +1,7 @@
 package br.com.mercadolivre.product.dto;
 
 import javax.validation.constraints.NotBlank;
+import org.springframework.util.Assert;
 import br.com.mercadolivre.product.model.Category;
 import br.com.mercadolivre.product.repository.CategoryRepository;
 import br.com.mercadolivre.validation.FieldExistsConstraint;
@@ -37,7 +38,8 @@ public class CategoryRequest {
 			return new Category(name);
 		}
 
-		var category = repository.findById(categoryId).get();
-		return new Category(name, category);
+		var category = repository.findById(categoryId);
+		Assert.isTrue(category.isPresent(), "[BUG] FieldExistsValidator don't working");
+		return new Category(name, category.get());
 	}
 }
