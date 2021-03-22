@@ -30,10 +30,6 @@ public class FieldExistsValidator
 				+ clazz.getSimpleName() + " t WHERE " + field + " = :value");
 		query.setParameter("value", value);
 
-		if (query.getResultList().isEmpty()) {
-			return false;
-		}
-
-		return true;
+		return !query.getResultList().isEmpty();
 	}
 }

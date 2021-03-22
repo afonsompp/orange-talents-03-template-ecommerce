@@ -27,10 +27,7 @@ public class UniqueFieldValidator
 				+ clazz.getSimpleName() + " WHERE " + field + " = :value");
 		query.setParameter("value", value);
 
-		if (query.getResultList().size() > 0) {
-			return false;
-		}
-		return true;
+		return query.getResultList().isEmpty();
 	}
 
 }
