@@ -6,9 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import br.com.mercadolivre.user.utils.BcryptEncoder;
 
@@ -31,8 +28,7 @@ public class User {
 
 	}
 
-	public User(@Email @NotBlank String login,
-			@NotBlank @Size(min = 6) String password) {
+	public User(String login, String password) {
 		this.login = login;
 		this.password = BcryptEncoder.encodeIfPlainText(password);
 	}
