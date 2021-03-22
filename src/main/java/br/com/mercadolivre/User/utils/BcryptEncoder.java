@@ -7,6 +7,10 @@ public class BcryptEncoder {
 	private static Pattern BCRYPT_PATTERN =
 			Pattern.compile("\\A\\$2a?\\$\\d\\d\\$[./0-9A-Za-z]{53}");
 
+	private BcryptEncoder() {
+
+	}
+
 	public static String encodeIfPlainText(String password) {
 		var matcher = BCRYPT_PATTERN.matcher(password);
 		if (matcher.matches()) {
