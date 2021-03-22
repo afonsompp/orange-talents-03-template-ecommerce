@@ -21,7 +21,8 @@ public class UserController {
 	}
 
 	@PostMapping()
-	public ResponseEntity<?> postMethodName(@RequestBody @Valid UserRequest request) {
+	public ResponseEntity<Object> postMethodName(
+			@RequestBody @Valid UserRequest request) {
 		var user = request.parseToUser();
 		userRepository.save(user);
 
