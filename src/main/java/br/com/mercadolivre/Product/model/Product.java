@@ -94,6 +94,10 @@ public class Product {
 		return this.createAt;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (o == this)
