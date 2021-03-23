@@ -1,4 +1,4 @@
-package br.com.mercadolivre.security;
+package br.com.mercadolivre.security.configuration;
 
 import java.util.Collection;
 import java.util.List;
