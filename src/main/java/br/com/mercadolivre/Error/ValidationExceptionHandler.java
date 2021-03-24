@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -35,8 +36,21 @@ public class ValidationExceptionHandler {
 
 	}
 
+	@ExceptionHandler(BindException.class)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public ObjectError handler(BindException exception) {
+		List<FieldErrors> errors = extractFieldErrors(exception);
+
+		String message = messageSource.getMessage(
+				invalidData, null,
+				LocaleContextHolder.getLocale());
+
+		return new ObjectError(message, HttpStatus.BAD_REQUEST.value(), errors);
+
+	}
+
 	private List<FieldErrors> extractFieldErrors(
-			MethodArgumentNotValidException exception) {
+			BindException exception) {
 		List<FieldErrors> response = new ArrayList<>();
 		List<FieldError> errors = exception.getFieldErrors();
 

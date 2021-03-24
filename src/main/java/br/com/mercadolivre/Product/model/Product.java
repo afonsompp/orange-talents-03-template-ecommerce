@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.util.Assert;
 import br.com.mercadolivre.product.dto.ProductFeatureRequest;
 import br.com.mercadolivre.user.model.User;
 
@@ -39,7 +40,8 @@ public class Product {
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<ProductFeature> features = new ArrayList<>();
 
-	private List<ProductFeature> features;
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	private List<ProductImage> images = new ArrayList<>();
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -104,6 +106,16 @@ public class Product {
 		return user;
 	}
 
+	public List<ProductImage> getImages() {
+		return images;
+	}
+
+	public void addImages(List<ProductImage> images) {
+		Assert.notEmpty(images, "[BUG] Collection of images cannot be null");
+		Assert.noNullElements(images, "[BUG] collection of images cannot be null");
+		this.images.addAll(images);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (o == this)
@@ -118,6 +130,10 @@ public class Product {
 	@Override
 	public int hashCode() {
 		return id.hashCode();
+	}
+
+	public boolean isOwnership(User user) {
+		return this.user.getId().longValue() == user.getId().longValue();
 	}
 
 }
