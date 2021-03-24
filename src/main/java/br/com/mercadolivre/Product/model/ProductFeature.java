@@ -23,9 +23,10 @@ public class ProductFeature {
 	public ProductFeature() { // Hibernate
 	}
 
-	public ProductFeature(String feature, String description) {
+	public ProductFeature(String feature, String description, Product product) {
 		this.feature = feature;
 		this.description = description;
+		this.product = product;
 	}
 
 	public String getDescription() {

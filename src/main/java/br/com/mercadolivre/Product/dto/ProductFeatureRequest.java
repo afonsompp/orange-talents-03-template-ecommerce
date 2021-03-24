@@ -1,6 +1,7 @@
 package br.com.mercadolivre.product.dto;
 
 import javax.validation.constraints.NotBlank;
+import br.com.mercadolivre.product.model.Product;
 import br.com.mercadolivre.product.model.ProductFeature;
 
 public class ProductFeatureRequest {
@@ -22,8 +23,8 @@ public class ProductFeatureRequest {
 		return description;
 	}
 
-	public ProductFeature toProductFeature() {
-		return new ProductFeature(feature, description);
+	public ProductFeature toProductFeature(Product product) {
+		return new ProductFeature(feature, description, product);
 	}
 
 }

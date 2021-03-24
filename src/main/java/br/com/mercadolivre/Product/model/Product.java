@@ -2,7 +2,9 @@ package br.com.mercadolivre.product.model;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
+import br.com.mercadolivre.product.dto.ProductFeatureRequest;
 import br.com.mercadolivre.user.model.User;
 
 @Entity
@@ -34,6 +37,8 @@ public class Product {
 	private String description;
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	private List<ProductFeature> features = new ArrayList<>();
+
 	private List<ProductFeature> features;
 
 	@ManyToOne
@@ -52,14 +57,15 @@ public class Product {
 	}
 
 	public Product(String name, BigDecimal price, Integer quantity, String description,
-			List<ProductFeature> features, Category category, User user) {
+			List<ProductFeatureRequest> features, Category category, User user) {
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
 		this.description = description;
-		this.features = features;
 		this.category = category;
 		this.user = user;
+		this.features.addAll(features.stream().map(f -> f.toProductFeature(this))
+				.collect(Collectors.toList()));
 	}
 
 	public Long getId() {

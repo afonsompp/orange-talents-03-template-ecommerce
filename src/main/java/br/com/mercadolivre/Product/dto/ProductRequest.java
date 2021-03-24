@@ -2,7 +2,6 @@ package br.com.mercadolivre.product.dto;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -63,16 +62,11 @@ public class ProductRequest {
 	}
 
 	public Product toProduct(CategoryRepository repository, User user) {
-		var productFeatures = features
-				.stream()
-				.map(ProductFeatureRequest::toProductFeature)
-				.collect(Collectors.toList());
-
 		var category = repository.findById(categoryId);
 		Assert.isTrue(category.isPresent(), "[BUG] FieldExistsValidator don't working");
 
-		return new Product(name, price, quantity, description, productFeatures,
-				category.get(), user);
+		return new Product(name, price, quantity, description, features, category.get(),
+				user);
 
 	}
 }
