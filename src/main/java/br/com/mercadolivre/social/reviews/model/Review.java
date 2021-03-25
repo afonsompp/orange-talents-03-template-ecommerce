@@ -1,4 +1,4 @@
-package br.com.mercadolivre.social.reviews.dto;
+package br.com.mercadolivre.social.reviews.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

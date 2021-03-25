@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Range;
 import org.springframework.util.Assert;
 import br.com.mercadolivre.product.model.Product;
 import br.com.mercadolivre.product.repository.ProductRepository;
+import br.com.mercadolivre.social.reviews.model.Review;
 import br.com.mercadolivre.user.model.User;
 import br.com.mercadolivre.validation.FieldExistsConstraint;
 

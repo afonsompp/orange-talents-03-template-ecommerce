@@ -1,6 +1,7 @@
 package br.com.mercadolivre.social.reviews.dto;
 
 import br.com.mercadolivre.product.dto.ProductResponse;
+import br.com.mercadolivre.social.reviews.model.Review;
 
 public class ReviewResponse {
 	private Long id;
