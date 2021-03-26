@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.util.Assert;
 import br.com.mercadolivre.product.dto.ProductFeatureRequest;
+import br.com.mercadolivre.social.questions.model.Question;
+import br.com.mercadolivre.social.reviews.model.Review;
 import br.com.mercadolivre.user.model.User;
 
 @Entity
@@ -43,9 +45,16 @@ public class Product {
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<ProductImage> images = new ArrayList<>();
 
+	@OneToMany(mappedBy = "product")
+	private List<Question> quesions = new ArrayList<>();
+
+	@OneToMany(mappedBy = "product")
+	private List<Review> reviews = new ArrayList<>();
+
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Category category;
+
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private User user;
@@ -108,6 +117,31 @@ public class Product {
 
 	public List<ProductImage> getImages() {
 		return images;
+	}
+
+	public List<Question> getQuesions() {
+		return quesions;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public Integer getNumberOfReviews() {
+		if (reviews == null || reviews.isEmpty()) {
+			return 0;
+		}
+		return reviews.size();
+	}
+
+	public Double getReviewsRatingAvg() {
+		if (reviews == null || reviews.isEmpty()) {
+			return Double.valueOf(0);
+		}
+
+		var rateSum = reviews.stream().map(Review::getRate)
+				.collect(Collectors.summarizingDouble(Double::doubleValue)).getSum();
+		return rateSum / reviews.size();
 	}
 
 	public void addImages(List<ProductImage> images) {
