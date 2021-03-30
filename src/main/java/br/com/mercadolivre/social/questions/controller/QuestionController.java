@@ -11,7 +11,7 @@ import br.com.mercadolivre.product.repository.ProductRepository;
 import br.com.mercadolivre.security.configuration.AuthenticatedUser;
 import br.com.mercadolivre.social.questions.dto.QuestionRequest;
 import br.com.mercadolivre.social.questions.repository.QuestionRepository;
-import br.com.mercadolivre.social.questions.utils.EmailSender;
+import br.com.mercadolivre.social.utils.EmailSender;
 
 @RestController
 @RequestMapping

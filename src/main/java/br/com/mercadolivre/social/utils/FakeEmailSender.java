@@ -1,4 +1,4 @@
-package br.com.mercadolivre.social.questions.utils;
+package br.com.mercadolivre.social.utils;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
