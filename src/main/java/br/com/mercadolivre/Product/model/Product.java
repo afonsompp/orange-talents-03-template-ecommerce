@@ -46,7 +46,7 @@ public class Product {
 	private List<ProductImage> images = new ArrayList<>();
 
 	@OneToMany(mappedBy = "product")
-	private List<Question> quesions = new ArrayList<>();
+	private List<Question> questions = new ArrayList<>();
 
 	@OneToMany(mappedBy = "product")
 	private List<Review> reviews = new ArrayList<>();
@@ -119,8 +119,8 @@ public class Product {
 		return images;
 	}
 
-	public List<Question> getQuesions() {
-		return quesions;
+	public List<Question> getQuestions() {
+		return questions;
 	}
 
 	public List<Review> getReviews() {
