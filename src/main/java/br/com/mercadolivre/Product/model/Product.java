@@ -79,6 +79,22 @@ public class Product {
 				.collect(Collectors.toList()));
 	}
 
+	public Product(String name, BigDecimal price, Integer quantity, String description,
+			List<ProductFeature> features, List<ProductImage> images,
+			List<Question> questions, List<Review> reviews, Category category,
+			User user) {
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
+		this.description = description;
+		this.features = features;
+		this.images = images;
+		this.questions = questions;
+		this.reviews = reviews;
+		this.category = category;
+		this.user = user;
+	}
+
 	public Long getId() {
 		return this.id;
 	}
