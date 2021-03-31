@@ -41,7 +41,7 @@ public class ProductDetailResponse {
 		this.reviews = product.getReviews().stream().map(ReviewResponse::new)
 				.collect(Collectors.toList());
 
-		this.questions = product.getQuesions().stream().map(QuestionsResponse::new)
+		this.questions = product.getQuestions().stream().map(QuestionsResponse::new)
 				.collect(Collectors.toList());
 
 		this.numberOfReview = product.getNumberOfReviews();

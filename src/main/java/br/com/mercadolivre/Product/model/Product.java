@@ -150,6 +150,16 @@ public class Product {
 		this.images.addAll(images);
 	}
 
+	public boolean withdrawStock(Integer quantity) {
+		if (this.quantity == null || quantity == null || this.quantity.intValue() <= 0
+				|| this.quantity < quantity)
+			return false;
+
+		this.quantity -= quantity;
+		return true;
+
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (o == this)
