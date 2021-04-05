@@ -13,7 +13,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.mercadolivre.purchase.dto.FinishPurchaseDto;
 import br.com.mercadolivre.purchase.model.Purchase;
 import br.com.mercadolivre.purchase.model.enums.ReturnPayment;
-import br.com.mercadolivre.purchase.repository.FinishPurchaseRepository;
 import br.com.mercadolivre.purchase.repository.PurchaseRepository;
 import br.com.mercadolivre.social.utils.EmailSender;
 import br.com.mercadolivre.validation.FieldExistsConstraint;
@@ -24,13 +23,11 @@ import br.com.mercadolivre.validation.FieldExistsConstraint;
 public class FinishPurchaseController {
 
 	PurchaseRepository purchaseRepository;
-	FinishPurchaseRepository repository;
 	private EmailSender emailSender;
 
 	public FinishPurchaseController(PurchaseRepository purchaseRepository,
-			FinishPurchaseRepository repository, EmailSender emailSender) {
+			EmailSender emailSender) {
 		this.purchaseRepository = purchaseRepository;
-		this.repository = repository;
 		this.emailSender = emailSender;
 	}
 
@@ -41,7 +38,12 @@ public class FinishPurchaseController {
 			@Valid @RequestBody FinishPurchaseDto dto) {
 
 		var purchase = purchaseRepository.findById(purchaseId).get();
-		repository.save(dto.toFinishPurchase(purchase));
+
+		if (purchase.purchaseIsFinished())
+			return ResponseEntity.badRequest().build();
+
+		purchase.setFinishPurchase(dto);
+		purchaseRepository.save(purchase);
 
 		if (ReturnPayment.SUCCESS.equals(dto.getStatus())) {
 			sendToInvoiceSystem(purchaseId, purchase.getUser().getId());
