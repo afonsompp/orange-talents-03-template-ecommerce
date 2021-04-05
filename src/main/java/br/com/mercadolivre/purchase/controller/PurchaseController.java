@@ -57,9 +57,8 @@ public class PurchaseController {
 				"noreply@email.com", product.getUser().getLogin());
 
 		var redirectUrl = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}/{getaway}")
-				.buildAndExpand(purchase.getId(),
-						purchase.getGetaway().toString().toLowerCase())
+				.path("/{id}")
+				.buildAndExpand(purchase.getId())
 				.toUriString();
 
 		var url = purchase.getGetaway().getUrl() + "?returnId="

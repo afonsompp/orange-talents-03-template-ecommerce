@@ -2,6 +2,7 @@ package br.com.mercadolivre.error;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.ConstraintViolationException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,21 @@ public class ValidationExceptionHandler {
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public ObjectError handler(MethodArgumentNotValidException exception) {
 		List<FieldErrors> errors = extractFieldErrors(exception);
+
+		String message = messageSource.getMessage(
+				invalidData, null,
+				LocaleContextHolder.getLocale());
+
+		return new ObjectError(message, HttpStatus.BAD_REQUEST.value(), errors);
+
+	}
+
+	@ExceptionHandler(ConstraintViolationException.class)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public ObjectError handler(ConstraintViolationException exception) {
+		List<FieldErrors> errors = new ArrayList<>();
+		exception.getConstraintViolations().forEach(v -> errors
+				.add(new FieldErrors(v.getPropertyPath().toString(), v.getMessage())));
 
 		String message = messageSource.getMessage(
 				invalidData, null,
